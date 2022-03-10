@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track} from 'lwc';
 
 import BLACK_HAT from '@salesforce/resourceUrl/black_hat';
 import BLACK_SHIRT from '@salesforce/resourceUrl/black_shirt';
@@ -76,4 +76,17 @@ const REWARDS = [
 
 export default class RewardShopContainer extends LightningElement {
     rewards = REWARDS;
+    @track selectedRewards = [];
+
+    submitQty(event){
+        console.log("This is what the container is getting");
+        console.log(event.detail);
+        console.log(event.detail.title);
+        this.selectedRewards.push(
+            {
+                title: event.detail.title,
+                qty: event.detail.qty,
+            });
+        console.log(this.selectedRewards);
+    }
 }

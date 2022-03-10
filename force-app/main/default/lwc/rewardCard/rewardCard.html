@@ -13,4 +13,10 @@
 
     <img src={itemImgUrl} style="max-height:125px;max-width:125px">
   </div>
+  <div class="slds" style="text-align:center">
+    <lightning-button variant="base" label="-" onclick={minus}></lightning-button>
+    {qty}
+    <lightning-button variant="base" label="+" onclick={plus}></lightning-button>
+    <lightning-button variant="brand" label="submit" onclick={submit}></lightning-button>
+  </div>
 </template>

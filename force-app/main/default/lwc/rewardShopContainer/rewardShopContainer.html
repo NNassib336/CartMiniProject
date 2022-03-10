@@ -6,13 +6,24 @@
   @last modified by  : Ben Learn
 -->
 <template>
-    <div class="slds-box slds-theme_default">
+    <div class="slds-grid">
+    <div class="slds-col slds-size_4-of-5 slds-box slds-theme_default">
         <lightning-layout multiple-rows horizontal-align="spread">
             <template for:each={rewards} for:item="reward">
                 <lightning-layout-item size="4" padding="around-small" key={reward.title}>
-                    <c-reward-card item-img-url={reward.url} item-title={reward.title}></c-reward-card>
+                    <c-reward-card item-img-url={reward.url} item-title={reward.title} onsubmitqty={submitQty}></c-reward-card>
                 </lightning-layout-item>
             </template>
         </lightning-layout>
     </div>
+    <div class="slds-col slds-size_1-of-5 slds-box slds-theme_default">
+        <p>Current items in your cart:</p>
+        <br>
+        <template for:each={selectedRewards} for:item="selected">
+            <lightning-layout-item key={selected.title}>
+                <c-reward-cart item-title={selected.title} item-qty={selected.qty}></c-reward-cart>
+            </lightning-layout-item>
+        </template>
+    </div>
+</div>
 </template>
